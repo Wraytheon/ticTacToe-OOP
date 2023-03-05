@@ -3,12 +3,15 @@ const board = document.querySelector(".board");
 let markerSymbol = "X"; // Initialize the markerSymbol to "X"
 
 // Get all cells within the board
-const cells = document.querySelectorAll('.cell');
+const cells = document.querySelectorAll(".cell");
 
 // Add click event listener to the board
-document.querySelector('.board').addEventListener('click', function(event) {
+document.querySelector(".board").addEventListener("click", function (event) {
   // Check if the clicked element is a cell
-  if (!event.target.classList.contains('cell')) return;
+  if (!event.target.classList.contains("cell")) return;
+
+  // Check if the clicked cell has already been clicked
+  if (event.target.classList.contains("clicked")) return;
 
   // Get the ID of the clicked cell
   const clickedCellId = event.target.id;
@@ -19,9 +22,12 @@ document.querySelector('.board').addEventListener('click', function(event) {
   document.querySelector(`#${clickedCellId}-marker`).textContent = markerSymbol;
 
   // Remove the 'hide' class from the marker within the clicked cell, if it exists
-  if (clickedCellMarker && clickedCellMarker.classList.contains('hide')) {
-    clickedCellMarker.classList.remove('hide');
+  if (clickedCellMarker && clickedCellMarker.classList.contains("hide")) {
+    clickedCellMarker.classList.remove("hide");
   }
+
+  // Add the 'clicked' class to the clicked cell
+  event.target.classList.add("clicked");
 
   // Set the markerSymbol to "X" on odd clicks and "O" on even clicks
   if (markerSymbol === "X") {
@@ -30,10 +36,6 @@ document.querySelector('.board').addEventListener('click', function(event) {
     markerSymbol = "X";
   }
 });
-
-
-
-
 
 // const topL = document.getElementById("top-left-marker");
 // const topC = document.getElementById("top-center-marker");
