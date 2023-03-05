@@ -48,3 +48,10 @@
   border-bottom: none;
   border-right: none;
 }
+
+.hide {
+  display: none;
+}
+.marker {
+  margin: 0 auto;
+}
