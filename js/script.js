@@ -5,13 +5,46 @@ let markerSymbol = "X"; // Initialize the markerSymbol to "X"
 // Get all cells within the board
 const cells = document.querySelectorAll(".cell");
 
+document.querySelector(".board").addEventListener("click", playerTurns)
 document.querySelector("#start-btn").addEventListener("click", function () {
+  document.querySelector(".player-one").classList.add("turn-alert");
   document.querySelector("#players-container").classList.remove("hide")
   document.querySelector("#board-container").classList.remove("hide")
 })
 
+//* Player turns
+let currentPlayer = 'player1';
+
+function playerTurns() {
+  // get the current player's turn
+  let playerOne = document.querySelector(".player-one")
+  let playerTwo = document.querySelector(".player-two")
+
+  // update the turn
+  if (currentPlayer === 'player1') {
+    playerTwo.classList.remove("turn-alert")
+    playerOne.classList.add("turn-alert")
+    currentPlayer = 'player2'
+    playerTwo.classList.add("turn-alert")
+    playerOne.classList.remove("turn-alert")
+  } else {
+    playerOne.classList.remove("turn-alert")
+    playerTwo.classList.add("turn-alert")
+    currentPlayer = 'player1';
+    playerOne.classList.add("turn-alert")
+    playerTwo.classList.remove("turn-alert")
+  }
+  console.log(currentPlayer)
+
+  // do something else
+  // ...
+}
+console.log(currentPlayer)
+
+
 // Add click event listener to the board
-document.querySelector(".board").addEventListener("click", function (event) {
+document.querySelector(".board").addEventListener("click", placeMarkers)
+function placeMarkers(event) {
   // Check if the clicked element is a cell
   if (!event.target.classList.contains("cell")) return;
 
@@ -40,8 +73,30 @@ document.querySelector(".board").addEventListener("click", function (event) {
   } else {
     markerSymbol = "X";
   }
-});
+};
 
+
+
+
+// add a click event listener to a button
+// let button = document.getElementById('my-button');
+// button.addEventListener('click', handleClick);
+// const topL = document.getElementById("top-left-marker");
+// const topC = document.getElementById("top-center-marker");
+// const topR = document.getElementById("top-right-marker");
+// const midL = document.getElementById("mid-left-marker");
+// const midC = document.getElementById("mid-center-marker");
+// const midR = document.getElementById("mid-right-marker");
+// const bottomL = document.getElementById("bottom-left-marker");
+// const bottomC = document.getElementById("bottom-center-marker");
+// const bottomR = document.getElementById("bottom-right-marker");
+// const winningComboLtr = 
+// function getWinner() {
+//   // if (!(topL.classList.contains("hide") && topC.classList.contains("hide") && topR.classList.contains("hide")) {
+//     document.querySelector("#result-text").innerContent = ""
+//   }
+
+// }
 // const topL = document.getElementById("top-left-marker");
 // const topC = document.getElementById("top-center-marker");
 // const topR = document.getElementById("top-right-marker");
