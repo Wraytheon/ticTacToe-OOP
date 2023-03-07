@@ -73,14 +73,10 @@ function placeMarkers(event) {
   } else {
     markerSymbol = "X";
   }
+
+  getWinner()
 };
 
-
-
-
-// add a click event listener to a button
-// let button = document.getElementById('my-button');
-// button.addEventListener('click', handleClick);
 // const topL = document.getElementById("top-left-marker");
 // const topC = document.getElementById("top-center-marker");
 // const topR = document.getElementById("top-right-marker");
@@ -90,11 +86,41 @@ function placeMarkers(event) {
 // const bottomL = document.getElementById("bottom-left-marker");
 // const bottomC = document.getElementById("bottom-center-marker");
 // const bottomR = document.getElementById("bottom-right-marker");
-// const winningComboLtr = 
-// function getWinner() {
-//   // if (!(topL.classList.contains("hide") && topC.classList.contains("hide") && topR.classList.contains("hide")) {
-//     document.querySelector("#result-text").innerContent = ""
-//   }
+
+// Check if the currentPlayer has won
+function getWinner() {
+  // Define all winning combinations
+  const winningCombos = [
+    ["top-left", "top-center", "top-right"],
+    ["mid-left", "mid-center", "mid-right"],
+    ["bottom-left", "bottom-center", "bottom-right"],
+    ["top-left", "mid-left", "bottom-left"],
+    ["top-center", "mid-center", "bottom-center"],
+    ["top-right", "mid-right", "bottom-right"],
+    ["top-left", "mid-center", "bottom-right"],
+    ["top-right", "mid-center", "bottom-left"],
+  ];
+
+  // Check if the currentPlayer has a winning combination
+  for (let combo of winningCombos) {
+    let hasWon = true;
+    for (let cellId of combo) {
+      if (!document.getElementById(cellId + "-marker").textContent.includes(markerSymbol)) {
+        console.log(document.getElementById(cellId + "-marker").textContent)
+        hasWon = false;
+        break;
+      }
+    }
+    if (hasWon) {
+      // If the currentPlayer has won, display a message and disable all cells
+      document.getElementById("result-text").innerHTML = `${currentPlayer} wins`
+      cells.forEach((cell) => {
+        cell.classList.add("clicked");
+      });
+      break;
+    }
+  }
+}
 
 // }
 // const topL = document.getElementById("top-left-marker");
