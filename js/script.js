@@ -73,12 +73,8 @@ function placeMarkers(event) {
     return;
   }
 
-  // Set the markerSymbol to "X" on odd clicks and "O" on even clicks
-  if (markerSymbol === "X") {
-    markerSymbol = "O";
-  } else {
-    markerSymbol = "X";
-  }
+  // Switch the marker symbol to the other player's symbol
+  markerSymbol = markerSymbol === "X" ? "O" : "X";
 
   playerTurns();
 }
