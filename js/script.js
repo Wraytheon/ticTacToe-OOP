@@ -33,12 +33,9 @@ function playerTurns() {
     playerOne.classList.add("turn-alert");
     playerTwo.classList.remove("turn-alert");
   }
-  console.log(currentPlayer);
 
-  // do something else
-  // ...
 }
-console.log(currentPlayer);
+
 
 // Add click event listener to the board
 document.querySelector(".board").addEventListener("click", placeMarkers);
