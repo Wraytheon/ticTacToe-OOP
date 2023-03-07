@@ -5,6 +5,11 @@ let markerSymbol = "X"; // Initialize the markerSymbol to "X"
 // Get all cells within the board
 const cells = document.querySelectorAll(".cell");
 
+document.querySelector("#start-btn").addEventListener("click", function () {
+  document.querySelector("#players-container").classList.remove("hide")
+  document.querySelector("#board-container").classList.remove("hide")
+})
+
 // Add click event listener to the board
 document.querySelector(".board").addEventListener("click", function (event) {
   // Check if the clicked element is a cell

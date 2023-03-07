@@ -1,3 +1,14 @@
+#start-btn{
+  background-color: rgb(224, 14, 14);
+}
+
+.hide {
+  display: none;
+}
+.marker {
+  margin: 0 auto;
+}
+
 .board {
   display: flex;
   flex-wrap: wrap;
@@ -47,11 +58,4 @@
 .cell.bottom.right {
   border-bottom: none;
   border-right: none;
-}
-
-.hide {
-  display: none;
-}
-.marker {
-  margin: 0 auto;
 }
